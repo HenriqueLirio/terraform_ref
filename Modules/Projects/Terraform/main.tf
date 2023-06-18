@@ -19,6 +19,14 @@ resource "azuredevops_project" "p_Terraform" {
   }
 }
 
+resource "azuredevops_repository_policy_author_email_pattern" "p_Terraform" {
+  project_id            = azuredevops_project.p_Terraform.id
+  enabled               = true
+  blocking              = true
+  author_email_patterns = ["henriq.lirio@gmail.com"]
+}
+
+
 module "az_project_terraform_repositories" {
   source = "./Repositories"
   project_id = azuredevops_project.p_Terraform.id
