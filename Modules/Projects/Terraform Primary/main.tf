@@ -8,7 +8,7 @@ terraform {
 }
 
 module "az_project_terraform_primary_repositories" {
-  source = "./Repositories"
+  source     = "./Repositories"
   project_id = azuredevops_project.p_terraform_primary.id
 }
 
