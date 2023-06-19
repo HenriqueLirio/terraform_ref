@@ -28,8 +28,7 @@ The project is structured as follows:
 │   │   │   │   ├── repo_one_name.tf
 │   │   │   │   └── repo_two_name.tf
 │   │   │   └── main.tf
-│   │   └── ...
-│   ├── modules.main.tf
+│   │   ├── module.main.tf
 │   └── ...
 └── main.tf
 ```
