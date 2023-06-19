@@ -7,10 +7,10 @@ terraform {
   }
 }
 
-module "az_project_terraform" {
-  source = "./Terraform"
+module "az_project_terraform_primary" {
+  source = "./Terraform Primary"
 }
 
-module "az_project_terraform_secundario" {
-  source = "./Terraform Secundário"
+module "az_project_terraform_secondary" {
+  source = "./Terraform Secondary"
 }

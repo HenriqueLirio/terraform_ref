@@ -7,8 +7,13 @@ terraform {
   }
 }
 
-resource "azuredevops_project" "p_Terraform_Secundario" {
-  name               = "Terraform Secundário"
+module "az_project_terraform_primary_repositories" {
+  source = "./Repositories"
+  project_id = azuredevops_project.p_terraform_primary.id
+}
+
+resource "azuredevops_project" "p_terraform_primary" {
+  name               = "Terraform Primary"
   visibility         = "private"
   version_control    = "Git"
   work_item_template = "Agile"
@@ -19,14 +24,10 @@ resource "azuredevops_project" "p_Terraform_Secundario" {
   }
 }
 
-resource "azuredevops_repository_policy_author_email_pattern" "p_Terraform_Secundario" {
-  project_id            = azuredevops_project.p_Terraform_Secundario.id
+resource "azuredevops_repository_policy_author_email_pattern" "p_terraform_primary" {
+  project_id            = azuredevops_project.p_terraform_primary.id
   enabled               = true
   blocking              = true
   author_email_patterns = ["henriq.lirio@gmail.com"]
 }
 
-module "az_project_terraform_secundario_repositories" {
-  source = "./Repositories"
-  project_id = azuredevops_project.p_Terraform_Secundario.id
-}
