@@ -7,10 +7,17 @@ terraform {
   }
 }
 
-module "az_project_terraform_primary" {
+module "terraform_primary" {
   source = "./Terraform Primary"
 }
+output "terraform_primary" {
+  value = module.terraform_primary
+}
 
-module "az_project_terraform_secondary" {
+module "terraform_secondary" {
   source = "./Terraform Secondary"
 }
+output "terraform_secondary" {
+  value = module.terraform_secondary
+}
+

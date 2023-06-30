@@ -1,18 +1,22 @@
-terraform {
-  required_providers {
-    azuredevops = {
-      source  = "microsoft/azuredevops"
-      version = "0.5.0"
-    }
-  }
-}
-
-module "az_project_terraform_primary_repositories" {
+module "repositories" {
   source     = "./Repositories"
-  project_id = azuredevops_project.p_terraform_primary.id
+  project_id = azuredevops_project.terraform_primary.id
+}
+output "repositories" {
+  value = module.repositories
 }
 
-resource "azuredevops_project" "p_terraform_primary" {
+module "teams" {
+  source     = "./Teams"
+  project_id = azuredevops_project.terraform_primary.id
+}
+output "teams" {
+  value = module.teams
+}
+
+
+
+resource "azuredevops_project" "terraform_primary" {
   name               = "Terraform Primary"
   visibility         = "private"
   version_control    = "Git"
@@ -24,10 +28,12 @@ resource "azuredevops_project" "p_terraform_primary" {
   }
 }
 
-resource "azuredevops_repository_policy_author_email_pattern" "p_terraform_primary" {
-  project_id            = azuredevops_project.p_terraform_primary.id
+resource "azuredevops_repository_policy_author_email_pattern" "terraform_primary" {
+  project_id            = azuredevops_project.terraform_primary.id
   enabled               = true
   blocking              = true
-  author_email_patterns = ["henriq.lirio@gmail.com"]
+  author_email_patterns = [
+    "*@quicksoft.com.br", 
+    "*@quicksoftblumenau.onmicrosoft.com"
+    ]
 }
-
