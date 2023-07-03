@@ -19,16 +19,29 @@ The project is structured as follows:
 
 ```
 .
-├── modules
-│   ├── projects
-│   │   └── project
-│   │   │   ├── repositories
+├── Modules
+│   ├── Groups
+│   │   ├── Teams
+│   │   ├── _outputs.tf
+│   │   ├── _providers.tf
+│   │   └── <team_name>.tf
+│   ├── Projects
+│   │   ├── <project-name>
+│   │   │   ├── Teams
+│   │   │   │   ├── _outputs.tf
+│   │   │   │   ├── _providers.tf
+│   │   │   │   └── <group_name>.tf
+│   │   │   ├── Repositories
+│   │   │   │   ├── _outputs.tf
 │   │   │   │   ├── _providers.tf
 │   │   │   │   ├── _variables.tf
-│   │   │   │   ├── repo_one_name.tf
-│   │   │   │   └── repo_two_name.tf
+│   │   │   │   └── <repository_name>.tf
 │   │   │   └── main.tf
-│   │   ├── module.main.tf
+│   │   └── main.tf
+│   ├── Users
+│   │   ├── _outputs.tf
+│   │   ├── _providers.tf
+│   │   └── users.tf
 │   └── ...
 └── main.tf
 ```
